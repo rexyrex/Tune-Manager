@@ -1,0 +1,51 @@
+in tuneList
+
+
+red listAlphabetically(
+  likeTune("No Such Name", "No Such Title",
+    addTune("FKA Twigs", "Hours",
+      addTune("Deerhoof", "Flower",
+        likeTune("Deerhoof", "We do Parties",
+          addTune("FKA Twigs", "Hours",
+            addTune("Deerhoof", "We do Parties", null)))))))
+  == "Deerhoof\nFlower\n0\nDeerhoof\nWe do Parties\n1\nFKA Twigs\nHours\n0\n" .
+
+red listByLikes(
+  likeTune("No Such Name", "No Such Title",
+    addTune("FKA Twigs", "Hours",
+      addTune("Deerhoof", "Flower",
+        likeTune("Deerhoof", "We do Parties",
+          addTune("FKA Twigs", "Hours",
+            addTune("Deerhoof", "We do Parties", null)))))))
+  == "Deerhoof\nWe do Parties\n1\nDeerhoof\nFlower\n0\nFKA Twigs\nHours\n0\n" .
+
+red listAlphabetically(
+    likeTune("The Necks", "Rum Jungle",
+      addTune("Manu Chao", "Les Milles Paillettes",
+        likeTune("Deerhoof", "We do Parties",
+          likeTune("The Necks", "Rum Jungle",
+            likeTune("The Necks", "Rum Jungle",
+              addTune("The Necks", "Rum Jungle",
+                likeTune("Deerhoof", "Flower",
+                  addTune("Deerhoof", "Flower",
+                    likeTune("Deerhoof", "We do Parties",
+                      addTune("FKA Twigs", "Hours",
+                        addTune("Deerhoof", "We do Parties", null))))))))))))
+    == "Deerhoof\nFlower\n1\nDeerhoof\nWe do Parties\n2\nFKA Twigs\nHours\n" +
+       "0\nManu Chao\nLes Milles Paillettes\n0\nThe Necks\nRum Jungle\n3\n" .
+
+red listByLikes(
+    likeTune("The Necks", "Rum Jungle",
+      addTune("Manu Chao", "Les Milles Paillettes",
+        likeTune("Deerhoof", "We do Parties",
+          likeTune("The Necks", "Rum Jungle",
+            likeTune("The Necks", "Rum Jungle",
+              addTune("The Necks", "Rum Jungle",
+                likeTune("Deerhoof", "Flower",
+                  addTune("Deerhoof", "Flower",
+                    likeTune("Deerhoof", "We do Parties",
+                      addTune("FKA Twigs", "Hours",
+                        addTune("Deerhoof", "We do Parties", null))))))))))))
+    == "The Necks\nRum Jungle\n3\nDeerhoof\nWe do Parties\n2\n" +
+       "Deerhoof\nFlower\n1\nFKA Twigs\nHours\n0\n" +
+       "Manu Chao\nLes Milles Paillettes\n0\n" .
